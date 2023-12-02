@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crude Oil Price Prediction</title>
+</head>
+<body>
+    <h2>Crude Oil Price Prediction</h2>
+    
+    <form action="/predict" method="post">
+        <label for="input_date">Number of step to predict :</label>
+        <input type="number" id="num_predict" name="num_predict" required min="1">
+        <button type="submit">Predict</button>
+        <button type="button" onclick="clearForm()">Clear</button>
+    </form>
+    
+    <h1>Prediction Result</h1>
+
+    <!-- Display input label -->
+    <p>Number to Predict: {{ num_predict }}</p>
+
+    <!-- Display status label -->
+    <p>Status: {{ status }}</p>
+
+    <!-- Display prediction table -->
+    {% if prediction %}
+        {{ prediction | safe }}
+    {% else %}
+        <p>No prediction available.</p>
+    {% endif %}
+
+</body>
+</html>
